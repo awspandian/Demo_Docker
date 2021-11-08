@@ -1,14 +1,44 @@
-this changes done in local first commit
-done by sara
+1.yml
 
-second line changed using local
+---
+- name: Transfer and execute a script.
+  hosts: dev
+  user: ansible
+  become: yes
+  tasks:
+     - name: Transfer the script
+       copy: src=demo.sh dest=/home/ansible owner: ansible group: ansible mode=0777
 
-this line added through web
+     - name: Execute the script
+       command: sh ./demo.sh
+	   
+   	 - name: Change file ownership for script
+       path: /home/ansible
+	   
+	 - name: Remove the Script
+       command: sh rm /home/ansible/demo.sh
+	   
+demo.sh
+#!/bin/bash
+cd /opt
+sudo touch sample.txt
+sudo chmod +655 sample.txt
+sudo chown ansible:ansible sample.txt
 
-git stash command 
+---
+- name: Transfer and execute a script.
+  hosts: dev
+  user: ansible
+  become: yes
+  tasks:
+- name: Transfer the script
+copy: src=demo.sh dest=/home/ansible owner=ansible group=ansible mode=0777
 
-git fork
+- name: Execute the script
+command: sh /home/ansible/demo.sh
 
-git stash
-
-rajkiran
+- name: Remove the Script
+ansible.builtin.file:
+path: /home/ansible/demo.sh
+state: absent
+~                         
