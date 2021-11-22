@@ -25,7 +25,7 @@ sudo touch sample.txt
 sudo chmod +655 sample.txt
 sudo chown ansible:ansible sample.txt
 
-
+----------------------------------------------------
 1.yml
 
 ---
