@@ -26,7 +26,7 @@ sudo chmod +655 sample.txt
 sudo chown ansible:ansible sample.txt
 
 ----------------------------------------------------
-1.yml
+shell.yml
 
 ---
 - name: Transfer and execute a script.
